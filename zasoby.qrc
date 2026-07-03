@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>../../img/nic.bmp</file>
+        <file>../../img/o.bmp</file>
+        <file>../../img/osmall.bmp</file>
+        <file>../../img/x.bmp</file>
+        <file>../../img/xsmall.bmp</file>
+    </qresource>
+</RCC>
