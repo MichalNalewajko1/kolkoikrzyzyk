@@ -42,9 +42,24 @@ private slots:
 private:
     Ui::MainWindow *ui;
     char aktualnyGracz = 'X';
-    void zmienTure();
+    char ai = 'O';
+    char board[3][3] = {
+        { '_', '_', '_' },
+        { '_', '_', '_' },
+        { '_', '_', '_' }
+    };
     QPushButton *przyciski[9];
     void klikniecie(QPushButton *przycisk);
     void sprawdz();
+    struct Move{
+        int row, col;
+    };
+    bool isMoveLeft(char[3][3]);
+    int evaluate(char b[3][3]);
+    int minimax(char b[3][3], int depth, bool isMax);
+    Move findBestMove(char b[3][3]);
+    Move getComputerMove(char b[3][3], int difficultyLevel);
+    Move findRandomMove(char b[3][3]);
+    void resetBoard();
 };
 #endif // MAINWINDOW_H
