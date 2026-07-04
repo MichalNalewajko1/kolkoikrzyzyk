@@ -273,6 +273,39 @@
      <string>RESET!!</string>
     </property>
    </widget>
+   <widget class="QComboBox" name="wyborTrudnosci">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>20</y>
+      <width>151</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>24</pointsize>
+     </font>
+    </property>
+    <property name="tabletTracking">
+     <bool>false</bool>
+    </property>
+    <item>
+     <property name="text">
+      <string>Łatwy</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Średni</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Trudny</string>
+     </property>
+    </item>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

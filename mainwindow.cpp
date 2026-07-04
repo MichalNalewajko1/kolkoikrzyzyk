@@ -20,6 +20,26 @@ MainWindow::MainWindow(QWidget *parent)
     przyciski[7] = ui->p8;
     przyciski[8] = ui->p9;
     srand(time(NULL));
+
+
+    ui->pushButton->setStyleSheet(
+        "QPushButton {"
+        "   background-color: #e74c3c;"
+        "   color: white;"
+        "   font-size: 22px;"
+        "   font-weight: bold;"
+        "   border: none;"
+        "   border-radius: 8px;"
+        "   padding: 5px;"
+        "}"
+        "QPushButton:hover {"
+        "   background-color: #c0392b;"
+        "}"
+        "QPushButton:pressed {"
+        "   background-color: #962d22;"
+        "}"
+        );
+    this->setStyleSheet("QMainWindow { background-color: #f5f6fa; }");
 }
 
 MainWindow::~MainWindow()
@@ -91,7 +111,8 @@ void MainWindow::klikniecie(QPushButton *przycisk)
 
     if (!isMoveLeft(board) || evaluate(board) != 0) return;
 
-    Move bestMove = getComputerMove(board, 2);
+    int wybranyPoziom = ui->wyborTrudnosci->currentIndex()+1;
+    Move bestMove = getComputerMove(board, wybranyPoziom);
 
 
     int aiIndex = bestMove.row * 3 + bestMove.col;
