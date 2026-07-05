@@ -38,5 +38,8 @@ private:
 
     void klikniecie(QPushButton *przycisk);
     void sprawdz();
+
+protected:
+    void closeEvent(QCloseEvent *event) override;
 };
 #endif // MAINWINDOW_H

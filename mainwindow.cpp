@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include <QMessageBox>
+#include <QCloseEvent>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -139,6 +140,21 @@ void MainWindow::on_pushButton_clicked()
     }
 
     gra.resetBoard();
+}
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    QMessageBox::StandardButton odpowiedz = QMessageBox::question(
+        this,
+        "Wyjście z gry",
+        "Czy na pewno chcesz wyjść z gry?",
+        QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel
+        );
+
+    if (odpowiedz == QMessageBox::Yes) {
+        event->accept();
+    } else {
+        event->ignore();
+    }
 }
 
 void MainWindow::on_p1_clicked() { klikniecie(ui->p1); }
