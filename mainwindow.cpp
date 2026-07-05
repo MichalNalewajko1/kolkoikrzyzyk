@@ -143,17 +143,24 @@ void MainWindow::on_pushButton_clicked()
 }
 void MainWindow::closeEvent(QCloseEvent *event)
 {
-    QMessageBox::StandardButton odpowiedz = QMessageBox::question(
-        this,
-        "Wyjście z gry",
-        "Czy na pewno chcesz wyjść z gry?",
-        QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel
-        );
+    QMessageBox msgBox(this);
+    msgBox.setWindowTitle("Wyjście z gry");
+    msgBox.setText("Czy na pewno chcesz wyjść z gry?");
+    msgBox.setIcon(QMessageBox::Question);
 
-    if (odpowiedz == QMessageBox::Yes) {
-        event->accept();
+    // Tworzymy przyciski od razu z polskim tekstem i przypisaną rolą
+    QPushButton *takButton = msgBox.addButton("Tak", QMessageBox::YesRole);
+    QPushButton *nieButton = msgBox.addButton("Nie", QMessageBox::NoRole);
+    QPushButton *anulujButton = msgBox.addButton("Anuluj", QMessageBox::RejectRole);
+
+    // Pokazujemy okienko
+    msgBox.exec();
+
+    // Sprawdzamy, który konkretnie wskaźnik przycisku został kliknięty
+    if (msgBox.clickedButton() == takButton) {
+        event->accept(); // Zamykamy grę
     } else {
-        event->ignore();
+        event->ignore(); // Kliknięto "Nie" lub "Anuluj" -> zostajemy w grze
     }
 }
 
